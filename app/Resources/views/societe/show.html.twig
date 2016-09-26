@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>societe</h1>
+<div class="col-sm-6">
+    <table class="table table-striped">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ societe.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ societe.nom }}</td>
+            </tr>
+            <tr>
+                <th>Num_siret</th>
+                <td>{{ societe.numsiret }}</td>
+            </tr>
+            <tr>
+                <th>Adresse</th>
+                <td>{{ societe.adresse }}</td>
+            </tr>
+            <tr>
+                <th>Responsable</th>
+                <td>{{ societe.responsable }}</td>
+            </tr>
+            <tr>
+                <th>Raison_social</th>
+                <td>{{ societe.raisonsocial }}</td>
+            </tr>
+            <tr>
+                <th>Date_creation</th>
+                <td>{% if societe.datecreation %}{{ societe.datecreation|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    
+            <a class="btn btn-gray" href="{{ path('societe_index') }}">Back to the list</a>
+        
+            <a class="btn btn-primary" href="{{ path('societe_edit', { 'id': societe.id }) }}">Edit</a>
+        
+            {{ form_start(delete_form) }}
+                <input class="btn btn-danger" type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

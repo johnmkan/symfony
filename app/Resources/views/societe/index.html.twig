@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>societe list</h1>
+<div class="col-sm-8">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Num_siret</th>
+                <th>Adresse</th>
+                <th>Responsable</th>
+                <th>Raison_social</th>
+                <th>Date_creation</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for societe in societes %}
+            <tr>
+                <td><a href="{{ path('societe_show', { 'id': societe.id }) }}">{{ societe.id }}</a></td>
+                <td>{{ societe.nom }}</td>
+                <td>{{ societe.numsiret }}</td>
+                <td>{{ societe.adresse }}</td>
+                <td>{{ societe.responsable }}</td>
+                <td>{{ societe.raisonsocial }}</td>
+                <td>{% if societe.datecreation %}{{ societe.datecreation|date('Y-m-d') }}{% endif %}</td>
+                <td>
+                    
+                            <a class="btn btn-info" href="{{ path('societe_show', { 'id': societe.id }) }}">Voir</a>
+                       
+                            <a class="btn btn-danger" href="{{ path('societe_edit', { 'id': societe.id }) }}">Editer</a>
+                        <br> <br>
+                </td>
+
+            </tr>
+
+        {% endfor %}
+        </tbody>
+    </table>
+
+   
+            <a class="btn btn-success"href="{{ path('societe_new') }}">Ajouter une nouvelle société</a>
+        </div>
+{% endblock %}
